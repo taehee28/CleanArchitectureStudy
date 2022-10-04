@@ -1,24 +1,26 @@
-package com.thk.data.datasorce
+package com.thk.data.datasource
 
 import androidx.lifecycle.LiveData
+import com.thk.data.database.NumbersDao
 import com.thk.data.model.NumberEntity
+import javax.inject.Inject
 
-interface NumbersDatasource {
+interface LocalDataSource {
     suspend fun getNumbers(): LiveData<List<NumberEntity>>
     suspend fun insertNumber(number: NumberEntity)
     suspend fun clearNumbers()
 }
 
-class NumbersDatasourceImpl : NumbersDatasource {
+class LocalDataSourceImpl @Inject constructor(private val dao: NumbersDao) : LocalDataSource {
     override suspend fun getNumbers(): LiveData<List<NumberEntity>> {
-        TODO("Not yet implemented")
+        return dao.getNumbers()
     }
 
     override suspend fun insertNumber(number: NumberEntity) {
-        TODO("Not yet implemented")
+        dao.insertNumber(number)
     }
 
     override suspend fun clearNumbers() {
-        TODO("Not yet implemented")
+        dao.clearNumbers()
     }
 }
