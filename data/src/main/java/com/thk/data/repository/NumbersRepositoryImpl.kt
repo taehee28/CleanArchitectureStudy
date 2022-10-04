@@ -7,14 +7,12 @@ import com.thk.data.model.NumberEntity
 import com.thk.data.model.toNumberEntity
 import com.thk.data.model.toNumberModel
 import com.thk.domain.model.NumberModel
+import com.thk.domain.repository.NumbersRepository
 import javax.inject.Inject
 
-interface NumbersRepository {
-    suspend fun getNumbers(): LiveData<List<NumberModel>>
-    suspend fun insertNumber(number: NumberModel)
-    suspend fun clearNumbers()
-}
-
+/**
+ * domain 레이어에 정의한 [NumbersRepository] 인터페이스의 구현 클래스
+ */
 class NumbersRepositoryImpl @Inject constructor(private val dataSource: LocalDataSource) : NumbersRepository {
 
     override suspend fun getNumbers(): LiveData<List<NumberModel>> {

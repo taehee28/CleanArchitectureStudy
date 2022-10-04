@@ -6,8 +6,8 @@ import com.thk.data.database.NumbersDao
 import com.thk.data.database.NumbersDatabase
 import com.thk.data.datasource.LocalDataSource
 import com.thk.data.datasource.LocalDataSourceImpl
-import com.thk.data.repository.NumbersRepository
 import com.thk.data.repository.NumbersRepositoryImpl
+import com.thk.domain.repository.NumbersRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
