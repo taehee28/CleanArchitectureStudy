@@ -16,7 +16,7 @@ abstract class NumbersDatabase : RoomDatabase() {
 @Dao
 interface NumbersDao {
     @Query("SELECT * FROM numbers")
-    suspend fun getNumbers(): LiveData<List<NumberEntity>>
+    fun getNumbers(): LiveData<List<NumberEntity>>
 
     @Insert
     suspend fun insertNumber(number: NumberEntity)

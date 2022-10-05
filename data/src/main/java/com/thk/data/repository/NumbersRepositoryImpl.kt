@@ -15,7 +15,7 @@ import javax.inject.Inject
  */
 class NumbersRepositoryImpl @Inject constructor(private val dataSource: LocalDataSource) : NumbersRepository {
 
-    override suspend fun getNumbers(): LiveData<List<NumberModel>> {
+    override fun getNumbers(): LiveData<List<NumberModel>> {
         // DataSource에서 LiveData<List<NumberEntity>>의 형태로 반환하는 데이터를
         // domain 레이어에서 사용할 수 있게 <LiveData<List<NumberModel>>로 변환
         return Transformations.map(dataSource.getNumbers()) { entityList: List<NumberEntity> ->

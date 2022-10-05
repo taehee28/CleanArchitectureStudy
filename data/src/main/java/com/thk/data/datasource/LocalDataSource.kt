@@ -6,13 +6,13 @@ import com.thk.data.model.NumberEntity
 import javax.inject.Inject
 
 interface LocalDataSource {
-    suspend fun getNumbers(): LiveData<List<NumberEntity>>
+    fun getNumbers(): LiveData<List<NumberEntity>>
     suspend fun insertNumber(number: NumberEntity)
     suspend fun clearNumbers()
 }
 
 class LocalDataSourceImpl @Inject constructor(private val dao: NumbersDao) : LocalDataSource {
-    override suspend fun getNumbers(): LiveData<List<NumberEntity>> {
+    override fun getNumbers(): LiveData<List<NumberEntity>> {
         return dao.getNumbers()
     }
 

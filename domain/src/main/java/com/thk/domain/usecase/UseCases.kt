@@ -10,14 +10,14 @@ import javax.inject.Inject
  */
 
 class GetNumbersUseCase @Inject constructor(private val repository: NumbersRepository) {
-    suspend operator fun invoke(): LiveData<List<NumberModel>> {
+    operator fun invoke(): LiveData<List<NumberModel>> {
         return repository.getNumbers()
     }
 }
 
 class InsertNumberUseCase @Inject constructor(private val repository: NumbersRepository) {
     suspend operator fun invoke(value: Int) {
-        val number = NumberModel(value)
+        val number = NumberModel(id = 0, value = value)
         repository.insertNumber(number)
     }
 }
