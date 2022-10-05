@@ -11,7 +11,8 @@ import com.thk.domain.repository.NumbersRepository
 import javax.inject.Inject
 
 /**
- * domain 레이어에 정의한 [NumbersRepository] 인터페이스의 구현 클래스
+ * domain 레이어에 정의한 [NumbersRepository] 인터페이스의 구현 클래스.
+ * Repository는 다양한 DataSource를 상황에 맞게 사용하여 UseCase의 요청을 처리할 수 있어야 함
  */
 class NumbersRepositoryImpl @Inject constructor(private val dataSource: LocalDataSource) : NumbersRepository {
 

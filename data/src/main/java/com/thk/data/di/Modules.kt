@@ -19,7 +19,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
     /**
-     * [NumbersRepository]의 인스턴스를 생성하는 방법을 명시
+     * [NumbersRepository]의 인스턴스를 생성하는 방법을 명시.
      */
     @Singleton
     @Provides
@@ -31,7 +31,7 @@ object RepositoryModule {
 @InstallIn(SingletonComponent::class)
 object DatasourceModule {
     /**
-     * [LocalDataSource]의 인스턴스를 생성하는 방법을 명시
+     * [LocalDataSource]의 인스턴스를 생성하는 방법을 명시.
      */
     @Singleton
     @Provides
@@ -42,14 +42,14 @@ object DatasourceModule {
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
     /**
-     * [NumbersDao] 인스턴스를 생성하는 방법을 명시
+     * [NumbersDao] 인스턴스를 생성하는 방법을 명시.
      */
     @Singleton
     @Provides
     fun provideNumbersDao(database: NumbersDatabase): NumbersDao = database.dao()
 
     /**
-     * [NumbersDatabase] 인스턴스를 생성하는 방법을 명시
+     * [NumbersDatabase] 인스턴스를 생성하는 방법을 명시.
      */
     @Singleton
     @Provides
