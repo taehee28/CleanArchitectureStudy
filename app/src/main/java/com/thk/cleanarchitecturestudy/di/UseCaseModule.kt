@@ -2,6 +2,7 @@ package com.thk.cleanarchitecturestudy.di
 
 import com.thk.domain.repository.NumbersRepository
 import com.thk.domain.usecase.ClearNumbersUseCase
+import com.thk.domain.usecase.GetNumbersAsFlowUseCase
 import com.thk.domain.usecase.GetNumbersUseCase
 import com.thk.domain.usecase.InsertNumberUseCase
 import dagger.Module
@@ -17,6 +18,9 @@ import javax.inject.Singleton
 object UseCaseModule {
     @Provides
     fun provideGetNumbersUseCase(repository: NumbersRepository) = GetNumbersUseCase(repository)
+
+    @Provides
+    fun provideGetNumbersAsFlowUseCase(repository: NumbersRepository) = GetNumbersAsFlowUseCase(repository)
 
     @Provides
     fun provideInsertNumberUseCase(repository: NumbersRepository) = InsertNumberUseCase(repository)

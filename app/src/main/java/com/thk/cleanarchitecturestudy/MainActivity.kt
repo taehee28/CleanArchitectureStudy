@@ -2,11 +2,15 @@ package com.thk.cleanarchitecturestudy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -15,6 +19,10 @@ import com.thk.cleanarchitecturestudy.databinding.ItemNumberBinding
 import com.thk.cleanarchitecturestudy.viewmodel.MainViewModel
 import com.thk.domain.model.NumberModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
 import java.security.SecureRandom
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -47,6 +55,20 @@ class MainActivity : AppCompatActivity() {
         viewModel.numbers.observe(this) { list ->
             listAdapter.submitList(list)
         }
+
+/*
+        // flow
+        lifecycleScope.launch {
+            viewModel.numbersFlow
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .distinctUntilChanged()
+                .collectLatest {
+                    listAdapter.submitList(it)
+                    Log.d("TAG", "collectLatest: !!")
+                }
+        }
+*/
+
     }
 
     /**

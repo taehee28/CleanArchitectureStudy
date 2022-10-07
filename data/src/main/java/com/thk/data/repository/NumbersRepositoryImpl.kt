@@ -8,6 +8,8 @@ import com.thk.data.model.toNumberEntity
 import com.thk.data.model.toNumberModel
 import com.thk.domain.model.NumberModel
 import com.thk.domain.repository.NumbersRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 /**
@@ -22,6 +24,10 @@ class NumbersRepositoryImpl @Inject constructor(private val dataSource: LocalDat
         return Transformations.map(dataSource.getNumbers()) { entityList: List<NumberEntity> ->
             entityList.map { element -> element.toNumberModel() }
         }
+    }
+
+    override fun getNumbersAsFlow(): Flow<List<NumberModel>> {
+        return dataSource.getNumbersAsFlow().map { it.map { element -> element.toNumberModel() } }
     }
 
     override suspend fun insertNumber(number: NumberModel) {
